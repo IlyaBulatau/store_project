@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-md bg-dark">
+    <a href="/" class="navbar-brand ms-4"><span class="material-symbols-outlined text-success material-icons md-48">
+        shop
+        </span></a>
+    <button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#navbar"><span class="navbar-toggler-icon"></span></button>
+    <div id="navbar" class="collapse navbar-collapse">   
+    <ul class="navbar-nav">
+        <li class="navbar-item dropdown"><a class="nav-link text-light text-uppercase fw-bold px-3 dropdown-toggle" data-bs-toggle="dropdown" href="">Categories</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">All products</a>
+                {% for category in links%}
+                <a class="dropdown-item" href="#">{{category.name}}</a>
+                {% endfor %}
+            </div>
+        </li>
+        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="">Contacts</a></li>
+        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="">About</a></li>
+        {% if request.user.is_authenticated and request.user.first_name %}
+        <li class="navbar-item"><span class="nav-link text-light text-uppercase fw-bold px-3">Welcom, {{ request.user.first_name }}! 
+            <span class="material-symbols-outlined cart-icon">account_circle</span>
+        </span></li>
+        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="#">Sign Out 
+            <span class="material-symbols-outlined cart-icon">logout</span>
+        </a></li>
+
+        {% else %}
+        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="#">Sign Up 
+            <span class="material-symbols-outlined cart-icon">add</span>
+        </a></li>
+
+        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="#">Log in 
+            <span class="material-symbols-outlined cart-icon">login</span>
+        </a></li>
+
+        {% endif %}
+
+        {% if item_count > 0 %}
+        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="#">
+                <span class="material-symbols-outlined cart-icon">add_shopping_cart</span>
+            ({{item_count}})</a></li>
+        {% endif %}
+    </ul>
+    </div> 
+
+    <form class="form-inline">
+        <div class="input-group">
+            <input type="text" placeholder="Search">
+            <div>
+                <button class="bg-success"><span class="material-symbols-outlined material-icons.md-24">search</span></button>
+            </div>
+        </div>
+    </form>
+    </div> 
+</nav>

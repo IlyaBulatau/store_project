@@ -1,0 +1,28 @@
+{% extends 'product/base.html' %}
+{% load static %}
+{% block title %}
+    Product
+{% endblock %}
+
+
+{% block content %}
+    <div class="container py-5">
+        <div class="row mt-5">
+            <div class="col-10 mx-auto col-md-6 my-3">
+                <img src="{{detail.image.url}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-10 mx-auto col-md-6 my-3">
+        <div>
+            <h1 class="product-title">{{detail.title}}</h1>
+            <h5 class="text-info font-italic mb-4">{{detail.price}}$</h5>
+            <p class="product-desc">Product description</p>
+            <p class="text-justify product_text">Color: {{detail.description.color}}</p>
+            <p class="text-justify product_text">Season: {{detail.description.season}}</p>
+            <p class="text-justify product_text">Content: {{detail.description.content}}</p>
+
+        </div>
+    </div>
+{% endblock %}
