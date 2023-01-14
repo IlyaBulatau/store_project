@@ -13,7 +13,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-10 mx-auto col-md-6 my-3">
         <div>
             <h1 class="product-title">{{detail.title}}</h1>
@@ -22,7 +21,7 @@
             <p class="text-justify product_text">Color: {{detail.description.color}}</p>
             <p class="text-justify product_text">Season: {{detail.description.season}}</p>
             <p class="text-justify product_text">Content: {{detail.description.content}}</p>
-
+            <a href="#"><b><p class="text-justify product_text">Category: {{detail.category.name}}</p></b></a> <!--добавить возможность переходить по ссылке к товарам этой категории-->
         </div>
     </div>
 {% endblock %}

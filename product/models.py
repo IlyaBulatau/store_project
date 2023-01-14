@@ -21,8 +21,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_url(self):
-    #     return reverse('home', args=[self.pk])
+    def get_url(self):
+        return reverse('cat_detail', args=[self.pk])
 
 class Description(models.Model):
     context = [
