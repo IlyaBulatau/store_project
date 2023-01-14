@@ -7,24 +7,24 @@
     <ul class="navbar-nav">
         <li class="navbar-item dropdown"><a class="nav-link text-light text-uppercase fw-bold px-3 dropdown-toggle" data-bs-toggle="dropdown" href="">Categories</a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">All products</a>
-                {% for category in links%}
-                <a class="dropdown-item" href="#">{{category.name}}</a>
+                <a class="dropdown-item" href="{% url 'home' %}">All products</a>
+                {% for category in cat%}
+                <a class="dropdown-item" href="{{category.get_url}}">{{category.name}}</a>
                 {% endfor %}
             </div>
         </li>
         <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="">Contacts</a></li>
         <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="">About</a></li>
-        {% if request.user.is_authenticated and request.user.first_name %}
-        <li class="navbar-item"><span class="nav-link text-light text-uppercase fw-bold px-3">Welcom, {{ request.user.first_name }}! 
+        {% if request.user.is_authenticated %}
+        <li class="navbar-item"><span class="nav-link text-light text-uppercase fw-bold px-3">Welcom, {{ request.user.username }}! 
             <span class="material-symbols-outlined cart-icon">account_circle</span>
         </span></li>
-        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="#">Sign Out 
+        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="{% url 'logout' %}">Sign Out 
             <span class="material-symbols-outlined cart-icon">logout</span>
         </a></li>
 
         {% else %}
-        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="#">Sign Up 
+        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="{% url 'register' %}">Sign Up 
             <span class="material-symbols-outlined cart-icon">add</span>
         </a></li>
 

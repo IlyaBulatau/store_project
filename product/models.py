@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
@@ -18,6 +20,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    # def get_url(self):
+    #     return reverse('home', args=[self.pk])
 
 class Description(models.Model):
     context = [

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.urls import reverse_lazy
 
-from authentication.forms import UserLoginForm
+from authentication.forms import UserLoginForm, UserRegisterForm
 
 def login(request):
     if request.method == 'POST':
@@ -21,4 +21,16 @@ def login(request):
     return render(request, 'authentication/login.html', context)
 
 def register(request):
-    pass
+    if request.method == 'POST':
+        form = UserRegisterForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse_lazy('login'))
+    else:
+        form = UserRegisterForm()
+    context = {'form': form}
+    return render(request, 'authentication/register.html', context)
+    
+def logout(requset):
+    auth.logout(requset)
+    return HttpResponseRedirect(reverse_lazy('login'))
