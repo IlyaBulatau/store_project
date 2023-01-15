@@ -13,7 +13,7 @@
                 {% endfor %}
             </div>
         </li>
-        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="{% url 'cart' %}">Cart</a></li>
+        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="{% url 'cart_detail' %}">Cart</a></li>
         <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="">About</a></li>
         {% if request.user.is_authenticated %}
         <li class="navbar-item"><span class="nav-link text-light text-uppercase fw-bold px-3">Welcom, {{ request.user.username }}! 
