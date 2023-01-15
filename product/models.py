@@ -6,6 +6,7 @@ class Product(models.Model):
     title = models.CharField(max_length=255)
     description = models.ForeignKey('Description', on_delete=models.PROTECT)
     image = models.ImageField(upload_to='image')
+    stock = models.IntegerField()
     price = models.DecimalField(max_digits=8, decimal_places=2, blank=None)
     is_published = models.BooleanField(default=True)
     create_time = models.DateTimeField(auto_now_add=True)
