@@ -25,3 +25,5 @@ def cat_detail(request, category_id):
     products = Product.objects.filter(category=category)
     return render(request, 'product/cat_detail.html',
          {'category': category, 'products': products})
+
+

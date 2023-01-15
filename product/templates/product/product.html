@@ -21,8 +21,8 @@
             <p class="text-justify product_text">Color: {{detail.description.color}}</p>
             <p class="text-justify product_text">Season: {{detail.description.season}}</p>
             <p class="text-justify product_text">Content: {{detail.description.content}}</p>
-            <a href="#"><b><p class="text-justify product_text">Category: {{detail.category.name}}</p></b></a> <!--добавить возможность переходить по ссылке к товарам этой категории-->
-            <p><a href="#">Add to cart</a></p>
+            <a href="{% url 'cat_detail' detail.category.id %}"><b><p class="text-justify product_text">Category: {{detail.category.name}}</p></b></a> 
+            <p><a href="{% url 'add_cart' detail.id %}">Add to cart</a></p>
         </div>
     </div>
 {% endblock %}
