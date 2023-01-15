@@ -7,7 +7,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('product.urls')),
-    path('account/', include('authentication.urls'))
+    path('account/', include('authentication.urls')),
+    path('cart/', include('cart.urls'))
 ]
 
 if settings.DEBUG: 
