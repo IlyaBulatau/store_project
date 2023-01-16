@@ -22,7 +22,10 @@
             <p class="text-justify product_text">Season: {{detail.description.season}}</p>
             <p class="text-justify product_text">Content: {{detail.description.content}}</p>
             <a href="{% url 'cat_detail' detail.category.id %}"><b><p class="text-justify product_text">Category: {{detail.category.name}}</p></b></a> 
+            {% if user.is_authenticated %}
             <p><a href="{% url 'add_cart' detail.id %}">Add to cart</a></p>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
+

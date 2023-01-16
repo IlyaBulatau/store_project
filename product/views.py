@@ -25,7 +25,10 @@ class ProductDeatailView(generic.DetailView):
 def cat_detail(request, category_id):
     category = Category.objects.get(id=category_id)
     products = Product.objects.filter(category=category)
+    paginator = Paginator(products, 3) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     return render(request, 'product/cat_detail.html',
-         {'category': category, 'products': products})
+         {'category': category, 'page_obj': page_obj})
 
 
