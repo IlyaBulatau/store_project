@@ -56,13 +56,13 @@
                     {% if cart_item.quantity < cart_item.product.stock %}
                     <td>
                         <a href="{% url 'add_cart' cart_item.product.id %}"><span class="material-symbols-outlined cart-icon">add_shopping_cart</span></a>
-                        <a href="#"><span class="material-symbols-outlined cart-icon">remove_shopping_cart</span></a>
-                        <a href="#"><span class="material-symbols-outlined cart-icon">delete</span></a>
+                        <a href="{% url 'cart_remove' cart_item.product.id %}"><span class="material-symbols-outlined cart-icon">remove_shopping_cart</span></a>
+                        <a href="{% url 'cart_remove_product' cart_item.product.id %}"><span class="material-symbols-outlined cart-icon">delete</span></a>
                     </td>
                     {% else %}
                     <td>
-                        <a href="#"><span class="material-symbols-outlined cart-icon">remove_shopping_cart</span></a>
-                        <a href="#"><span class="material-symbols-outlined cart-icon">delete</span></a>
+                        <a href="{% url 'cart_remove' cart_item.product.id %}"><span class="material-symbols-outlined cart-icon">remove_shopping_cart</span></a>
+                        <a href="{% url 'cart_remove_product' cart_item.product.id %}"><span class="material-symbols-outlined cart-icon">delete</span></a>
                     </td>
                     {% endif %}
                 </tr>

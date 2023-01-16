@@ -12,6 +12,9 @@ class Product(models.Model):
     create_time = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey('Category', on_delete=models.PROTECT)
 
+    class Meta:
+        ordering = ['-create_time']
+
     def __str__(self):
         return self.title
 

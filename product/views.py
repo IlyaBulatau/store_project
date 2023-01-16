@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
+from django.core.paginator import Paginator
 
 from .models import Product, Category
 
 class ProductListView(generic.ListView):
+    paginate_by = 3
     model = Product
     template_name = 'product/home.html'
     context_object_name = 'products'
