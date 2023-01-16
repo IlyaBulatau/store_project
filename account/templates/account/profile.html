@@ -1,0 +1,32 @@
+{% extends 'product/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="col-9 col-sm-9  col-md-6 col-lg-5 mx-auto bg-light">
+    <br>
+    <form action="{% url 'profile' %}" method="post">
+
+
+        <label for="{{ form.first_name.id_for_label }}">First name</label>
+        {{ form.first_name }} 
+        <label for="{{ form.last_name.id_for_label }}">Last name</label>
+        {{ form.last_name }}<br><br>
+
+        <label for="{{ form.username.id_for_label }}">Login</label>
+        {{ form.username }}
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        {{ form.email }} <br> <br>
+
+        <button type="submit" name="buttom" class="btn btn-secondary ">Update</button>
+
+    </form>
+</div>
+<hr>
+<br>
+<h1>Cart info</h1>
+
+
+
+{% endblock %}
