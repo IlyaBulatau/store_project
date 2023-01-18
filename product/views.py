@@ -1,9 +1,13 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic.base import View
 from django.views import generic
 from django.core.paginator import Paginator
 
-from .models import Product, Category
+import datetime
+
+from product.models import Product, Category
+from comment.forms import CommentForm
+from comment.models import Comment
 
 class ProductListView(generic.ListView):
     paginate_by = 3
@@ -21,6 +25,7 @@ class ProductDeatailView(generic.DetailView):
 #     model = Category
 #     template_name = 'product/cat_detail.html'
 #     context_object_name = 'category'
+
 
 def cat_detail(request, category_id):
     category = Category.objects.get(id=category_id)

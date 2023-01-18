@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'authentication',
     'cart',
     'account',
+    'comment',
 ]
 
 MIDDLEWARE = [
