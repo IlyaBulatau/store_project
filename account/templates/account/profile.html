@@ -1,14 +1,14 @@
 {% extends 'product/base.html' %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
 
 
 <div class="col-9 col-sm-9  col-md-6 col-lg-5 mx-auto bg-light">
     <br>
-    <form action="{% url 'profile' %}" method="post">
+    <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
+        <img src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'users/avatar.jpg' %} {% endif %}" width="100" height="100"><br><br>
         <label for="{{ form.first_name.id_for_label }}">First name</label>
         {{ form.first_name }} 
         <label for="{{ form.last_name.id_for_label }}">Last name</label>
@@ -19,6 +19,9 @@
         <label for="{{ form.email.id_for_label }}">Email</label>
         {{ form.email }} <br> <br>
 
+        <label for="{{ form.image.id_for_label }}">Image</label>
+        {{ form.image }}
+
         <button type="submit" name="buttom" class="btn btn-secondary ">Update</button>
 
     </form>
@@ -26,7 +29,6 @@
 <hr>
 <br>
 <h1>Cart info</h1>
-
 
 
 {% endblock %}

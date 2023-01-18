@@ -8,7 +8,8 @@ class ProfileForm(UserChangeForm):
     last_name = forms.CharField(max_length=50, required=True)
     email = forms.EmailField(max_length=250, help_text='user@gmail.com')
     username = forms.CharField(max_length=50, required=True)
+    image = forms.ImageField()
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'username']
+        fields = ['first_name', 'last_name', 'email', 'username', 'image']

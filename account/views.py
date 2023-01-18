@@ -7,7 +7,7 @@ from account import forms
 
 def profile(request):
     if request.method=='POST':
-        form = forms.ProfileForm( instance=request.user, data=request.POST)
+        form = forms.ProfileForm( instance=request.user, data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('profile'))
