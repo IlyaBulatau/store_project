@@ -18,7 +18,7 @@
         {% else %}
         <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="#">Cart</a></li>
         {% endif %}
-        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="{% url 'comments' %}">Add comment</a></li>
+        <li class="navbar-item"><a class="nav-link text-light text-uppercase fw-bold px-3" href="#">Add comment</a></li>
         {% if request.user.is_authenticated %}
         <li class="navbar-item"><span class="nav-link text-light text-uppercase fw-bold px-3">Welcom,<a href="{% url 'profile' %}">{{ request.user.username }}</a> ! 
             <span class="material-symbols-outlined cart-icon">account_circle</span>

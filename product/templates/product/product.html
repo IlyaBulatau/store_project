@@ -9,32 +9,48 @@
     <div class="container py-5">
         <div class="row mt-5">
             <div class="col-10 mx-auto col-md-6 my-3">
-                <img src="{{detail.image.url}}">
+                <img src="{{product.image.url}}">
             </div>
         </div>
     </div>
     <div class="col-10 mx-auto col-md-6 my-3">
         <div>
-            <h1 class="product-title">{{detail.title}}</h1>
-            <h5 class="text-info font-italic mb-4">{{detail.price}}$</h5>
+            <h1 class="product-title">{{product.title}}</h1>
+            <h5 class="text-info font-italic mb-4">{{product.price}}$</h5>
             <p class="product-desc">Product description</p>
-            <p class="text-justify product_text">Color: {{detail.description.color}}</p>
-            <p class="text-justify product_text">Season: {{detail.description.season}}</p>
-            <p class="text-justify product_text">Content: {{detail.description.content}}</p>
-            <a href="{% url 'cat_detail' detail.category.id %}"><b><p class="text-justify product_text">Category: {{detail.category.name}}</p></b></a> 
+            <p class="text-justify product_text">Color: {{product.description.color}}</p>
+            <p class="text-justify product_text">Season: {{product.description.season}}</p>
+            <p class="text-justify product_text">Content: {{product.description.content}}</p>
+            <a href="#"><b><p class="text-justify product_text">Category: {{product.category.name}}</p></b></a> 
             {% if user.is_authenticated %}
-            <p><a href="{% url 'add_cart' detail.id %}">Add to cart</a></p>
+            <p><a href="{% url 'add_cart' product.id %}">Add to cart</a></p>
             {% endif %}
         </div>
+        
     </div>
-
-    <!-- <form action="" method="post">
-
-        {{ form.as_p }}
-        {% csrf_token %}
-
-        <button type="submit">Commeted</button>
-
-    </form>
+    {% for comment in comments %}
+    <div class="comments" style="padding: 10px;">
+      <p class="font-weight-bold">
+        {{ comment.author }}
+        <span class=" text-muted font-weight-normal">
+          {{ comment.created }}
+        </span>
+      </p>
+      {{ comment.content | linebreaks }}
+    </div>
+    {% endfor %}
+    <div class="card-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Your comment is awaiting moderation
+        </div>
+        {% else %}
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Comment</button>
+        </form>
+        {% endif %}
+      </div>
 {% endblock %}
-
